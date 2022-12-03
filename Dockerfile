@@ -20,3 +20,13 @@ RUN pip install -r requirements.txt
 
 # add app from current dir of the machine to workdir of container
 COPY . .
+
+# add entrypoint.sh and provide persmissions
+# chmod +x on a file means, you'll make it executable. 
+COPY ./entrypoint.sh .
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# run entrypoint.sh (ENTRYPOINT["executable", "param1", "param2"])
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+
+
